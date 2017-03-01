@@ -8,12 +8,28 @@ h1 {
 	text-align: center;
 }
 
+div#banner {
+	top: 0;
+	left: 0;
+	background-color: #808080;
+	width: 100%;
+}
+
+div#banner-content {
+	width: 800px;
+	margin: 0 auto;
+	padding: 4px;
+	color: #F0F0F0 ;
+	font-size: 1.5em;
+	font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+}
+
 #pedigree {
 	position: absolute;
 	width: 800px;
 	height: 600px;
 	top: 50%;
 	left: 50%;
-	margin: -300px 0 0 -400px;
+	margin: -220px 0 0 -400px;
 	outline: #cecece dashed thin;
 }
