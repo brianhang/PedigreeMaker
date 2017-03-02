@@ -1,13 +1,16 @@
+/* Setting fonts for the body */
 body {
 	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 	margin: 0;
 	padding: 0;
 }
 
+/* Header align */
 h1 {
 	text-align: center;
 }
 
+/* Create our div for the top of the page */
 div#banner {
 	top: 0;
 	left: 0;
@@ -15,6 +18,7 @@ div#banner {
 	width: 100%;
 }
 
+/* Text formatting for banner text */
 div#banner-content {
 	width: 800px;
 	margin: 0 auto;
@@ -22,8 +26,10 @@ div#banner-content {
 	color: #F0F0F0 ;
 	font-size: 1.5em;
 	font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+	font-weight: bold;
 }
 
+/* Format pedigree, add dashed outline */
 #pedigree {
 	position: absolute;
 	width: 800px;
