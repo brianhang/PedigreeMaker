@@ -6,12 +6,17 @@
     </head>
     <body>
         <div id="banner">
+<<<<<<< HEAD
             <div id="banner-content">
             Pedigree Maker
             </div>
 	    <div id="banner-content">
-		my first html!!
+		<div id="banner-sq">
+		</div>	
 	    </div>
+=======
+            <div id="banner-content">Pedigree Maker</div><div id="banner-content">ABC</div>
+>>>>>>> origin/master
         </div>
         <canvas id="pedigree" width="800px" height="600px">
             Sorry! Your browser does not support canvas!
