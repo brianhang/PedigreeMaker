@@ -20,13 +20,29 @@ div#banner {
 
 /* Text formatting for banner text */
 div#banner-content {
-	width: 800px;
-	margin: 0 auto;
-	padding: 4px;
+	display: inline-block ;
+	margin: 0 auto ;
+	padding: 4px ;
 	color: #F0F0F0 ;
 	font-size: 1.5em;
 	font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
 	font-weight: bold;
+}
+/* square on the banner */
+div#banner-sq {
+	display: inline-block;
+	height: 100px;
+        width: 100px;
+	background-color: white;
+	border: 5px solid black;	
+}
+/* circle on the banner */
+div#banner-circ {
+	display: inline-block;
+	height:0px ;
+	width:0px ;
+	background-color: white;
+	border: 5px solid black;
 }
 
 /* Format pedigree, add dashed outline */

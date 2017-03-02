@@ -10,8 +10,7 @@
             Pedigree Maker
             </div>
 	    <div id="banner-content">
-		<div id="banner-sq">
-		</div>	
+		my first html!!
 	    </div>
         </div>
         <canvas id="pedigree" width="800px" height="600px">
