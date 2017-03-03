@@ -48,8 +48,9 @@ div#banner-circ {
 /* Format pedigree, add dashed outline */
 #pedigree {
 	position: absolute;
-	width: 800px;
-	height: 600px;
+	width: auto;
+	height:auto;
+	display: inline-block;
 	top: 50%;
 	left: 50%;
 	margin: -220px 0 0 -400px;
