@@ -4,8 +4,8 @@ const FEMALE = 1;
 const OTHER = 2;
 
 // Values for the state of the individual.
-const AFFECTED = 0;
-const UNAFFECTED = 1;
+const UNAFFECTED = 0;
+const AFFECTED = 1;
 const CARRIER = 2;
 
 // The size of an individual in the chart when drawn.
@@ -49,7 +49,22 @@ class Node {
         switch (this.sex) {
             case MALE:
                 // Draw a square for male.
-                ctx.strokeRect(this.x, this.y, SIZE, SIZE);
+				
+				if(this.state==AFFECTED){
+				
+                ctx.fillRect(this.x, this.y, SIZE, SIZE);
+				}
+				else if(this.state==UNAFFECTED){
+			     ctx.strokeStyle="black";
+                 ctx.strokeRect(this.x, this.y, SIZE, SIZE);
+				}
+				 else{
+				
+					 ctx.fillStyle='#d3d3d3';
+                     ctx.fillRect(this.x, this.y, SIZE, SIZE);
+					 ctx.strokeStyle="black";
+					ctx.strokeRect(this.x, this.y, SIZE, SIZE);
+				 }
 
                 break;
             case FEMALE:
@@ -59,21 +74,42 @@ class Node {
                 // Draw a circle for female. Note the "top left" is at (x, y).
                 ctx.beginPath();
                 ctx.arc(this.x + radius, this.y + radius, SIZE / 2, 0, Math.PI * 2, false);
-                ctx.stroke();
-
+				
+				
+				 if(this.state==AFFECTED){
+					ctx.fill();
+					
+             
+				}
+				 else if(this.state==CARRIER){
+					 ctx.fillStyle="#d3d3d3";
+					 ctx.fill();
+//ctx.strokeStyle="black";
+                
+				 }
+				 ctx.strokeStyle="black";
+				    ctx.stroke();
                 break;
             default:
-                break
+                break;
         }
 
         // TODO: Shading of the individual using this.state
     }
 }
+//d3d3d3
 
 // Create an individual when the page loads for testing.
 $(document).ready(function() {
-    var p1 = new Node(64, 64, MALE);
-    var p2 = new Node(196, 64, FEMALE);
+    var p1 = new Node(64, 64, MALE,1);
+    var p2 = new Node(196, 64, FEMALE,1);
+	
+    var p1 = new Node(300, 64, MALE,2);
+    var p2 = new Node(400, 64, FEMALE,2);
+	
+	
+    var p1 = new Node(500, 64, MALE,0);
+    var p2 = new Node(600, 64, FEMALE,0);
 
     console.log(p1, p2);
 })
