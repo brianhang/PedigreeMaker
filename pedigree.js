@@ -44,36 +44,54 @@ class Node {
 
         // Get the 2D context to draw 2D stuff on the canvas.
         var ctx = canvas.getContext('2d');
+        if(this.sex == MALE) {
+            ctx.fillStyle = 'white';
+            ctx.fillRect(this.x, this.y, SIZE, SIZE);
+            ctx.strokeStyle = 'white';
+	    ctx.strokeRect(this.x, this.y, SIZE, SIZE);
+            ctx.strokeStyle = 'black';
+            ctx.fillStyle = 'black';
+        } else {
+            // Get the radius of the circle.
+            const radius = SIZE / 2;
+            ctx.beginPath();
+            ctx.arc(this.x + radius, this.y + radius, SIZE / 2, 0, Math.PI * 2, false);
+            ctx.fillStyle = 'white';
+            ctx.fill();
+            ctx.strokeStyle = 'white';
+            ctx.stroke();
+            ctx.strokeStyle = 'black';
+            ctx.fillStyle = 'black';
+        }
 
         // Determine which shape to draw with.
         switch (this.sex) {
             case MALE:
                 // Draw a square for male.
-				if (this.state == AFFECTED) {
+		if (this.state == AFFECTED) {
+	            ctx.strokeRect(this.x, this.y, SIZE, SIZE);
                     ctx.fillRect(this.x, this.y, SIZE, SIZE);
-				} else if (this.state == UNAFFECTED) {
+		} else if (this.state == UNAFFECTED) {
                     ctx.strokeStyle = 'black';
                     ctx.strokeRect(this.x, this.y, SIZE, SIZE);
-				} else {
-					ctx.fillStyle = '#d3d3d3';
+		} else {
+		    ctx.fillStyle = '#d3d3d3';
                     ctx.fillRect(this.x, this.y, SIZE, SIZE);
-
-					ctx.strokeStyle = 'black';
-					ctx.strokeRect(this.x, this.y, SIZE, SIZE);
+		    ctx.strokeStyle = 'black';
+	            ctx.strokeRect(this.x, this.y, SIZE, SIZE);
                 }
 
                 break;
             case FEMALE:
                 // Get the radius of the circle.
                 const radius = SIZE / 2;
-
                 // Draw a circle for female. Note the "top left" is at (x, y).
                 ctx.beginPath();
                 ctx.arc(this.x + radius, this.y + radius, SIZE / 2, 0, Math.PI * 2, false);
 				
                 if (this.state == AFFECTED) {
                     ctx.fill();
-				} else if (this.state == CARRIER) {
+		} else if (this.state == CARRIER) {
                     ctx.fillStyle="#d3d3d3";
                     ctx.fill();
                     //ctx.strokeStyle="black";        
@@ -86,21 +104,59 @@ class Node {
             default:
                 break;
         }
-
-        // TODO: Shading of the individual using this.state
     }
+}
+/* Checks if we click within one of our nodes, and toggles the color.
+ * @param nodes Array of nodes to check
+ * @param x Our x coordinate of our click
+ * @param y Our y coordinate of our click
+ */
+function checkClick(nodes, x, y) {
+  for(var i = 0; i < nodes.length; i++) {
+    if(inRange((nodes[i].x), (nodes[i].y), x, y)) {
+           nodes[i].state = (nodes[i].state + 1) % 3;
+           nodes[i].draw();
+           return true;
+    }
+  }
+  return false;
+}
+
+/* Checks if we click within a range x1 y1
+ * @param x1 Left coordinate of our box
+ * @param y1 Top coordinate of our box
+ * @param x2 Our x coordinate of our click
+ * @param y2 Our y coordinate of our click
+ */
+function inRange(x1, y1, x2, y2) {
+    if (x2 >= x1 && x2 <= (x1 + 64)) {
+        if (y2 >= y1 && y2 <= (y2 + 64)) {
+            return true;
+        }
+    }
+    return false;
 }
 
 // Create an individual when the page loads for testing.
 $(document).ready(function() {
+    var rect = $('#pedigree')[0].getBoundingClientRect();
+
     var p1 = new Node(64, 64, MALE, 1);
     var p2 = new Node(196, 64, FEMALE, 1);
 	
-    var p1 = new Node(300, 64, MALE, 2);
-    var p2 = new Node(400, 64, FEMALE, 2);
+    var p3 = new Node(300, 64, MALE, 2);
+    var p4 = new Node(400, 64, FEMALE, 2);
 	
-    var p1 = new Node(500, 64, MALE, 0);
-    var p2 = new Node(600, 64, FEMALE, 0);
+    var p5 = new Node(500, 64, MALE, 0);
+    var p6 = new Node(600, 64, FEMALE, 0);
 
+    var nodes = [p1, p2, p3, p4, p5, p6];
+
+    $('#pedigree').click(function (event) { 
+        if (checkClick(nodes, event.pageX-rect.left, event.pageY-rect.top)) {
+            event.preventDefault();
+            return false;
+        }
+    });
     console.log(p1, p2);
 });
