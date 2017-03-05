@@ -49,22 +49,18 @@ class Node {
         switch (this.sex) {
             case MALE:
                 // Draw a square for male.
-				
-				if(this.state==AFFECTED){
-				
-                ctx.fillRect(this.x, this.y, SIZE, SIZE);
-				}
-				else if(this.state==UNAFFECTED){
-			     ctx.strokeStyle="black";
-                 ctx.strokeRect(this.x, this.y, SIZE, SIZE);
-				}
-				 else{
-				
-					 ctx.fillStyle='#d3d3d3';
-                     ctx.fillRect(this.x, this.y, SIZE, SIZE);
-					 ctx.strokeStyle="black";
+				if (this.state == AFFECTED) {
+                    ctx.fillRect(this.x, this.y, SIZE, SIZE);
+				} else if (this.state == UNAFFECTED) {
+                    ctx.strokeStyle = 'black';
+                    ctx.strokeRect(this.x, this.y, SIZE, SIZE);
+				} else {
+					ctx.fillStyle = '#d3d3d3';
+                    ctx.fillRect(this.x, this.y, SIZE, SIZE);
+
+					ctx.strokeStyle = 'black';
 					ctx.strokeRect(this.x, this.y, SIZE, SIZE);
-				 }
+                }
 
                 break;
             case FEMALE:
@@ -75,20 +71,17 @@ class Node {
                 ctx.beginPath();
                 ctx.arc(this.x + radius, this.y + radius, SIZE / 2, 0, Math.PI * 2, false);
 				
-				
-				 if(this.state==AFFECTED){
-					ctx.fill();
-					
-             
-				}
-				 else if(this.state==CARRIER){
-					 ctx.fillStyle="#d3d3d3";
-					 ctx.fill();
-//ctx.strokeStyle="black";
-                
-				 }
-				 ctx.strokeStyle="black";
-				    ctx.stroke();
+                if (this.state == AFFECTED) {
+                    ctx.fill();
+				} else if (this.state == CARRIER) {
+                    ctx.fillStyle="#d3d3d3";
+                    ctx.fill();
+                    //ctx.strokeStyle="black";        
+                }
+				 
+                ctx.strokeStyle="black";
+                ctx.stroke();
+
                 break;
             default:
                 break;
@@ -97,19 +90,17 @@ class Node {
         // TODO: Shading of the individual using this.state
     }
 }
-//d3d3d3
 
 // Create an individual when the page loads for testing.
 $(document).ready(function() {
-    var p1 = new Node(64, 64, MALE,1);
-    var p2 = new Node(196, 64, FEMALE,1);
+    var p1 = new Node(64, 64, MALE, 1);
+    var p2 = new Node(196, 64, FEMALE, 1);
 	
-    var p1 = new Node(300, 64, MALE,2);
-    var p2 = new Node(400, 64, FEMALE,2);
+    var p1 = new Node(300, 64, MALE, 2);
+    var p2 = new Node(400, 64, FEMALE, 2);
 	
-	
-    var p1 = new Node(500, 64, MALE,0);
-    var p2 = new Node(600, 64, FEMALE,0);
+    var p1 = new Node(500, 64, MALE, 0);
+    var p2 = new Node(600, 64, FEMALE, 0);
 
     console.log(p1, p2);
-})
+});
