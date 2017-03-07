@@ -106,6 +106,51 @@ class Node {
         }
     }
 }
+
+class Connector {
+     constructor(x, y, orientation) {
+          this.x = x;
+          this.y = y;
+          this.orientation = orientation;
+
+          this.draw();
+     }
+    /**
+     * Draws the connector on the screen.
+     */
+    draw() {
+        // Get the canvas that we will draw on.
+        var canvas = $('#pedigree')[0];
+
+        if (!canvas.getContext) {
+            return;
+        }
+
+        // Get the 2D context to draw 2D stuff on the canvas.
+        var ctx = canvas.getContext('2d');
+        ctx.fillStyle = '#3D3D3D';
+        ctx.fillRect(this.x-20, this.y+22, 80, 6);
+    }
+}
+
+function clearcanvas1()
+{
+    var alpha = 0;
+    var delta = 0.1; 
+    var canvas = $('#pedigree')[0];
+    if (!canvas.getContext) {
+        return;
+    }
+
+    // Get the 2D context to draw 2D stuff on the canvas.
+    var ctx = canvas.getContext('2d');
+
+    ctx.fillStyle = 'white';
+    ctx.globalAlpha = 0.2;
+}
+
+
+
 /* Checks if we click within one of our nodes, and toggles the color.
  * @param nodes Array of nodes to check
  * @param x Our x coordinate of our click
@@ -141,8 +186,11 @@ function inRange(x1, y1, x2, y2) {
 $(document).ready(function() {
     var rect = $('#pedigree')[0].getBoundingClientRect();
 
-    var p1 = new Node(300, 50, MALE, 0);
-    var p2 = new Node(400, 50, FEMALE, 0);
+    var c1 = new Connector(350, 50, true);
+
+    var p1 = new Node(290, 50, MALE, 0);
+    var p2 = new Node(410, 50, FEMALE, 0);
+ 
 
     var nodes = [p1, p2];
 
