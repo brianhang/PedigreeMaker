@@ -9,7 +9,7 @@ const AFFECTED = 1;
 const CARRIER = 2;
 
 // The size of an individual in the chart when drawn.
-const SIZE = 64;
+const SIZE = 50;
 
 // The Node class is an individual in the pedigree.
 class Node {
@@ -129,8 +129,8 @@ function checkClick(nodes, x, y) {
  * @param y2 Our y coordinate of our click
  */
 function inRange(x1, y1, x2, y2) {
-    if (x2 >= x1 && x2 <= (x1 + 64)) {
-        if (y2 >= y1 && y2 <= (y2 + 64)) {
+    if (x2 >= x1 && x2 <= (x1 + SIZE)) {
+        if (y2 >= y1 && y2 <= (y2 + SIZE)) {
             return true;
         }
     }
@@ -141,16 +141,10 @@ function inRange(x1, y1, x2, y2) {
 $(document).ready(function() {
     var rect = $('#pedigree')[0].getBoundingClientRect();
 
-    var p1 = new Node(64, 64, MALE, 1);
-    var p2 = new Node(196, 64, FEMALE, 1);
-	
-    var p3 = new Node(300, 64, MALE, 2);
-    var p4 = new Node(400, 64, FEMALE, 2);
-	
-    var p5 = new Node(500, 64, MALE, 0);
-    var p6 = new Node(600, 64, FEMALE, 0);
+    var p1 = new Node(300, 50, MALE, 0);
+    var p2 = new Node(400, 50, FEMALE, 0);
 
-    var nodes = [p1, p2, p3, p4, p5, p6];
+    var nodes = [p1, p2];
 
     $('#pedigree').click(function (event) { 
         if (checkClick(nodes, event.pageX-rect.left, event.pageY-rect.top)) {
