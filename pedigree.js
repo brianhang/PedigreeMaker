@@ -132,7 +132,7 @@ class Connector {
         ctx.fillRect(this.x-20, this.y+22, 80, 6);
     }
 }
-
+/* Function that will clear the canvas using a fade effect */
 function clearcanvas1()
 {
     var alpha = 0;
