@@ -133,8 +133,7 @@ class Connector {
     }
 }
 /* Function that will clear the canvas using a fade effect */
-function clearcanvas1()
-{
+function clearcanvas1() {
     var alpha = 0;
     var delta = 0.1; 
     var canvas = $('#pedigree')[0];
@@ -148,8 +147,6 @@ function clearcanvas1()
     ctx.fillStyle = 'white';
     ctx.globalAlpha = 0.2;
 }
-
-
 
 /* Checks if we click within one of our nodes, and toggles the color.
  * @param nodes Array of nodes to check
@@ -175,7 +172,7 @@ function checkClick(nodes, x, y) {
  */
 function inRange(x1, y1, x2, y2) {
     if (x2 >= x1 && x2 <= (x1 + SIZE)) {
-        if (y2 >= y1 && y2 <= (y2 + SIZE)) {
+        if (y2 >= y1 && y2 <= (y1 + SIZE)) {
             return true;
         }
     }
@@ -191,7 +188,6 @@ $(document).ready(function() {
     var p1 = new Node(290, 50, MALE, 0);
     var p2 = new Node(410, 50, FEMALE, 0);
  
-
     var nodes = [p1, p2];
 
     $('#pedigree').click(function (event) { 
