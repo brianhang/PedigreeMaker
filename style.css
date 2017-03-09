@@ -57,6 +57,16 @@ div#banner-circ {
 	border-radius: 20px;
 	border: 1px solid #000000;
 }
+/* help button for banner */
+div#help-button {
+	display: inline-block;
+	margin: 0 auto;
+	padding: 4px;
+	color: #F0F0F0;
+	font-size: 1em;
+	font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+	font-weight: bold;
+}
 
 /* Format pedigree, add dashed outline */
 #pedigree {
