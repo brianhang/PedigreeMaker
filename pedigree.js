@@ -166,7 +166,7 @@ function checkClick(nodes, connectors, x, y) {
   }
   for(var i = 0; i < connectors.length; i++){
      if(inRangeConnector((connectors[i].x), (connectors[i].y), x, y)) {
-     		alert("Clicked Connector");
+     	//TODO - Add new level
      }
   }
   return false;
@@ -188,7 +188,12 @@ function inRangeNode(x1, y1, x2, y2) {
 }
 
 function inRangeConnector(x1, y1, x2, y2){
-	return true;
+    if (x2 >= x1 && x2 <= (x1 + CONNECTOR_WIDTH)) {
+        if (y2 >= y1 && y2 <= (y1 + CONNECTOR_HEIGHT)) {
+            return true;
+        }
+    }
+    return false;
 }
 
 // Create an individual when the page loads for testing.
