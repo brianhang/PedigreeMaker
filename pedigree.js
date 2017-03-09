@@ -11,6 +11,9 @@ const CARRIER = 2;
 // The size of an individual in the chart when drawn.
 const SIZE = 50;
 
+const CONNECTOR_WIDTH = 80;
+const CONNECTOR_HEIGHT = 6
+
 // The Node class is an individual in the pedigree.
 class Node {
     /**
@@ -129,7 +132,7 @@ class Connector {
         // Get the 2D context to draw 2D stuff on the canvas.
         var ctx = canvas.getContext('2d');
         ctx.fillStyle = '#3D3D3D';
-        ctx.fillRect(this.x-20, this.y+22, 80, 6);
+        ctx.fillRect(this.x, this.y, 80, 6);
     }
 }
 /* Function that will clear the canvas using a fade effect */
@@ -153,13 +156,18 @@ function clearcanvas1() {
  * @param x Our x coordinate of our click
  * @param y Our y coordinate of our click
  */
-function checkClick(nodes, x, y) {
+function checkClick(nodes, connectors, x, y) {
   for(var i = 0; i < nodes.length; i++) {
-    if(inRange((nodes[i].x), (nodes[i].y), x, y)) {
+    if(inRangeNode((nodes[i].x), (nodes[i].y), x, y)) {
            nodes[i].state = (nodes[i].state + 1) % 3;
            nodes[i].draw();
            return true;
     }
+  }
+  for(var i = 0; i < connectors.length; i++){
+     if(inRangeConnector((connectors[i].x), (connectors[i].y), x, y)) {
+     		alert("Clicked Connector");
+     }
   }
   return false;
 }
@@ -170,7 +178,7 @@ function checkClick(nodes, x, y) {
  * @param x2 Our x coordinate of our click
  * @param y2 Our y coordinate of our click
  */
-function inRange(x1, y1, x2, y2) {
+function inRangeNode(x1, y1, x2, y2) {
     if (x2 >= x1 && x2 <= (x1 + SIZE)) {
         if (y2 >= y1 && y2 <= (y1 + SIZE)) {
             return true;
@@ -179,19 +187,25 @@ function inRange(x1, y1, x2, y2) {
     return false;
 }
 
+function inRangeConnector(x1, y1, x2, y2){
+	return true;
+}
+
 // Create an individual when the page loads for testing.
 $(document).ready(function() {
     var rect = $('#pedigree')[0].getBoundingClientRect();
 
-    var c1 = new Connector(350, 50, true);
+    var c1 = new Connector(330, 72, true);
 
     var p1 = new Node(290, 50, MALE, 0);
     var p2 = new Node(410, 50, FEMALE, 0);
  
     var nodes = [p1, p2];
 
+    var connectors = [c1];
+
     $('#pedigree').click(function (event) { 
-        if (checkClick(nodes, event.pageX-rect.left, event.pageY-rect.top)) {
+        if (checkClick(nodes, connectors, event.pageX-rect.left, event.pageY-rect.top)) {
             event.preventDefault();
             return false;
         }
