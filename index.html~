@@ -14,9 +14,7 @@
 		</div>
 		<div id="banner-content">
 		    /
-	        </div>	
-	        <div id="banner-circ">
-		</div>	
+	        </div>	    
 	    </div>
         </div>
         <canvas id="pedigree" width="800px" height="600px">
