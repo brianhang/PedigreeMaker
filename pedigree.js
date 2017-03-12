@@ -224,11 +224,13 @@ $(document).ready(function() {
     		width = 800;
     	}
     	$('#pedigree').animate({'marginLeft' : "-=" + width}, 2000);
+    	$('#info').animate({'marginLeft' : "-=" + width}, 2000);
   	}
     });
     $('#banner-content').click(function(event){
     	if(width != 0){
     	$('#pedigree').animate({'marginLeft' : "+=" + width}, 2000);
+    	$('#info').animate({'marginLeft' : "+=" + width}, 2000);
     	width = 0;
     }
     });
