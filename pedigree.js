@@ -209,11 +209,28 @@ $(document).ready(function() {
 
     var connectors = [c1];
 
+    var width = 0;
+
     $('#pedigree').click(function (event) { 
         if (checkClick(nodes, connectors, event.pageX-rect.left, event.pageY-rect.top)) {
             event.preventDefault();
             return false;
         }
+    });
+    $('#help-button').click(function(event) {
+    	if(width === 0){
+    	width = $(window).width();
+    	if(width < 800) {
+    		width = 800;
+    	}
+    	$('#pedigree').animate({'marginLeft' : "-=" + width}, 2000);
+  	}
+    });
+    $('#banner-content').click(function(event){
+    	if(width != 0){
+    	$('#pedigree').animate({'marginLeft' : "+=" + width}, 2000);
+    	width = 0;
+    }
     });
     console.log(p1, p2);
 });
