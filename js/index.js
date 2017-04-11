@@ -1,5 +1,6 @@
 // Create an individual when the page loads for testing.
 $(document).ready(function() {
+	$('#info').hide()
     var rect = $('#pedigree')[0].getBoundingClientRect();
 
     var p1 = new Node(290, 50, MALE, 0);
@@ -45,6 +46,8 @@ $(document).ready(function() {
             $('#pedigree').animate({'marginLeft' : "-=" + width}, 2000);
             $('#info').animate({'marginLeft' : "-=" + width}, 2000);
         }
+
+    	$('#pedigree').fadeOut(500, function() { $('#info').fadeIn(500)});
     });
 
     $('#banner-content').click(function(event){
@@ -53,7 +56,9 @@ $(document).ready(function() {
             $('#info').animate({'marginLeft' : "+=" + width}, 2000);
             width = 0;
         }
-    });
+
+    	$('#info').fadeOut(500, function() { $('#pedigree').fadeIn(500)});
+	});
 
     console.log(p1, p2);
 });
