@@ -33,6 +33,44 @@ class Node {
     }
 
     /**
+     * Adds an outsider and forms a connections between this node
+     * and the outsider node.
+     *
+     * @param state The state of the gene for the individual.
+     */
+    addOutsider(state) {
+        // Use the opposite sex for the outsider.
+        var newSex;
+
+        if (this.sex == MALE) {
+            newSex = FEMALE;
+        } else {
+            newSex = MALE;
+        }
+
+        // Create the outsider.
+        var outsider = new Node(this.x + OUTSIDER_GAP, this.y, newSex, state);
+
+        // Create a connection and add the outsider to it.
+        var mother;
+        var father;
+
+        if (this.sex == MALE) {
+            father = this;
+            mother = outsider;
+        } else {
+            father = outsider;
+            mother = this;
+        }
+
+        var connector = new Connector(mother, father);
+        connector.draw();
+
+        // Store the connector in this node.
+        this.connector = connector;
+    }
+
+    /**
      * Draws the individual on the screen.
      */
     draw() {

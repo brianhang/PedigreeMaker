@@ -13,11 +13,14 @@ $(document).ready(function() {
     var c1 = new Connector(p2, p1);
 
     // Number of children to test.
-    const testCount = Math.ceil(Math.random() * 10);
+    const testCount = Math.ceil(Math.random() * 4) + 1;
+    var lastChild;
 
     for (var i = 0; i < testCount; i++) {
         var n = new Node(0, 0, i % 2, 0);
         c1.addChild(n);
+
+        lastChild = n;
     }
 
     var nodes = [p1, p2];
@@ -25,6 +28,8 @@ $(document).ready(function() {
     var width = 0;
 
     c1.draw(true);
+
+    lastChild.addOutsider(Math.random() > 0.8);
 
     $('#pedigree').click(function (event) { 
         if (checkClick(nodes, connectors, event.pageX-rect.left, event.pageY-rect.top)) {

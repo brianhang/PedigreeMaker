@@ -1,5 +1,6 @@
-const CHILDREN_SPACE = NODE_SIZE * 1.5;
-const GAP_SIZE = NODE_SIZE * 1.25;
+const CHILDREN_SPACE = NODE_SIZE * 2.75;
+const GAP_SIZE = NODE_SIZE * 2;
+const OUTSIDER_GAP = NODE_SIZE * 1.25;
 
 class Connector {
     /**
@@ -100,6 +101,11 @@ class Connector {
         this.mother.draw();
         this.father.draw();
 
+        // Stop drawing if there are no children.
+        if (this.children.length == 0) {
+            return;
+        }
+        
         const midX = (NODE_SIZE + this.mother.x + this.father.x) / 2;
 
         // Draw line down to children segment.
@@ -128,8 +134,10 @@ class Connector {
                 ctx.lineTo(childX + NODE_SIZE/2, this.mother.y + GAP_SIZE);
             ctx.stroke();
 
-            // TODO: Recursively draw children connections. Need
-            //       to make sure we aren't redrawing connections.
+            // Draw children connectors as well.
+            if (this.children[i].connector) {
+                this.children[i].connector.draw();
+            }
         }
     }
 }
