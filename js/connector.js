@@ -115,12 +115,14 @@ class Connector {
         ctx.stroke();
 
         // Draw horizontal segment above children.
-        const childrenWidth = ((this.children.length - 1) * CHILDREN_SPACE) + NODE_SIZE;
+        if (this.children.length > 1) {
+            const childrenWidth = ((this.children.length - 1) * CHILDREN_SPACE) + NODE_SIZE;
 
-        ctx.beginPath();
-            ctx.moveTo(midX - childrenWidth/2, this.mother.y + GAP_SIZE);
-            ctx.lineTo(midX + childrenWidth/2, this.mother.y + GAP_SIZE);
-        ctx.stroke();
+            ctx.beginPath();
+                ctx.moveTo(midX - childrenWidth/2, this.mother.y + GAP_SIZE);
+                ctx.lineTo(midX + childrenWidth/2, this.mother.y + GAP_SIZE);
+            ctx.stroke();
+        }
 
         for (var i = 0; i < this.children.length; i++) {
             this.children[i].draw();

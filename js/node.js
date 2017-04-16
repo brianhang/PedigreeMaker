@@ -83,22 +83,27 @@ class Node {
 
         // Get the 2D context to draw 2D stuff on the canvas.
         var ctx = canvas.getContext('2d');
+
         if(this.sex == MALE) {
             ctx.fillStyle = 'white';
             ctx.fillRect(this.x, this.y, NODE_SIZE, NODE_SIZE);
+
             ctx.strokeStyle = 'white';
-	    ctx.strokeRect(this.x, this.y, NODE_SIZE, NODE_SIZE);
+            ctx.strokeRect(this.x, this.y, NODE_SIZE, NODE_SIZE);
+
             ctx.strokeStyle = 'black';
             ctx.fillStyle = 'black';
         } else {
             // Get the radius of the circle.
             const radius = NODE_SIZE / 2;
+
             ctx.beginPath();
-            ctx.arc(this.x + radius, this.y + radius, NODE_SIZE / 2, 0, Math.PI * 2, false);
-            ctx.fillStyle = 'white';
-            ctx.fill();
-            ctx.strokeStyle = 'white';
+                ctx.arc(this.x + radius, this.y + radius, NODE_SIZE / 2, 0, Math.PI * 2, false);
+                ctx.fillStyle = 'white';
+                ctx.fill();
+                ctx.strokeStyle = 'white';
             ctx.stroke();
+
             ctx.strokeStyle = 'black';
             ctx.fillStyle = 'black';
         }
@@ -107,35 +112,36 @@ class Node {
         switch (this.sex) {
             case MALE:
                 // Draw a square for male.
-		if (this.state == AFFECTED) {
-	            ctx.strokeRect(this.x, this.y, NODE_SIZE, NODE_SIZE);
+                if (this.state == AFFECTED) {
+                    ctx.strokeRect(this.x, this.y, NODE_SIZE, NODE_SIZE);
                     ctx.fillRect(this.x, this.y, NODE_SIZE, NODE_SIZE);
-		} else if (this.state == UNAFFECTED) {
+                } else if (this.state == UNAFFECTED) {
                     ctx.strokeStyle = 'black';
                     ctx.strokeRect(this.x, this.y, NODE_SIZE, NODE_SIZE);
-		} else {
-		    ctx.fillStyle = '#d3d3d3';
+                } else {
+                    ctx.fillStyle = '#d3d3d3';
                     ctx.fillRect(this.x, this.y, NODE_SIZE, NODE_SIZE);
-		    ctx.strokeStyle = 'black';
-	            ctx.strokeRect(this.x, this.y, NODE_SIZE, NODE_SIZE);
+
+                    ctx.strokeStyle = 'black';
+                    ctx.strokeRect(this.x, this.y, NODE_SIZE, NODE_SIZE);
                 }
 
                 break;
             case FEMALE:
                 // Get the radius of the circle.
                 const radius = NODE_SIZE / 2;
+                
                 // Draw a circle for female. Note the "top left" is at (x, y).
                 ctx.beginPath();
                 ctx.arc(this.x + radius, this.y + radius, NODE_SIZE / 2, 0, Math.PI * 2, false);
-				
+                
                 if (this.state == AFFECTED) {
                     ctx.fill();
-		} else if (this.state == CARRIER) {
+                } else if (this.state == CARRIER) {
                     ctx.fillStyle="#d3d3d3";
-                    ctx.fill();
-                    //ctx.strokeStyle="black";        
+                    ctx.fill();   
                 }
-				 
+                 
                 ctx.strokeStyle="black";
                 ctx.stroke();
 

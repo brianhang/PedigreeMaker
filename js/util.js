@@ -3,8 +3,9 @@ function clearcanvas1() {
     var alpha = 0;
     var delta = 0.1; 
     var canvas = $('#pedigree')[0];
+
     if (!canvas.getContext) {
-        return;
+      return;
     }
 
     // Get the 2D context to draw 2D stuff on the canvas.
@@ -22,16 +23,19 @@ function clearcanvas1() {
 function checkClick(nodes, connectors, x, y) {
   for(var i = 0; i < nodes.length; i++) {
     if(inRangeNode((nodes[i].x), (nodes[i].y), x, y)) {
-           nodes[i].state = (nodes[i].state + 1) % 3;
-           nodes[i].draw();
-           return true;
+      nodes[i].state = (nodes[i].state + 1) % 3;
+      nodes[i].draw();
+
+      return true;
     }
   }
+
   for(var i = 0; i < connectors.length; i++){
      if(inRangeConnector((connectors[i].x), (connectors[i].y), x, y)) {
-     	//TODO - Add new level
+      //TODO - Add new level
      }
   }
+
   return false;
 }
 
@@ -42,8 +46,8 @@ function checkClick(nodes, connectors, x, y) {
  * @param y2 Our y coordinate of our click
  */
 function inRangeNode(x1, y1, x2, y2) {
-    if (x2 >= x1 && x2 <= (x1 + SIZE)) {
-        if (y2 >= y1 && y2 <= (y1 + SIZE)) {
+    if (x2 >= x1 && x2 <= (x1 + NODE_SIZE)) {
+        if (y2 >= y1 && y2 <= (y1 + NODE_SIZE)) {
             return true;
         }
     }

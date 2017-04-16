@@ -13,7 +13,7 @@ $(document).ready(function() {
     var c1 = new Connector(p2, p1);
 
     // Number of children to test.
-    const testCount = Math.ceil(Math.random() * 4) + 1;
+    const testCount = 1// Math.ceil(Math.random() * 4) + 1;
     var lastChild;
 
     for (var i = 0; i < testCount; i++) {
@@ -34,6 +34,7 @@ $(document).ready(function() {
     $('#pedigree').click(function (event) { 
         if (checkClick(nodes, connectors, event.pageX-rect.left, event.pageY-rect.top)) {
             event.preventDefault();
+            
             return false;
         }
     });
