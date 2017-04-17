@@ -63,8 +63,14 @@ class Connector {
         const childrenWidth = ((this.children.length - 1) * CHILDREN_SPACE) + NODE_SIZE;
 
         for (var i = 0; i < this.children.length; i++) {
+            var offset = NODE_SIZE / 2;
+
+            if (this.children.length > 1) {
+                offset = childrenWidth * (i / (this.children.length - 1));
+            }
+
             // TODO: Simplify this?
-            this.children[i].x = (midX) - (childrenWidth/2) + (childrenWidth * (i / (this.children.length - 1)));
+            this.children[i].x = (midX) - (childrenWidth/2) + offset;
             this.children[i].y = this.mother.y + CHILDREN_SPACE;
         }
     }
@@ -93,13 +99,13 @@ class Connector {
 
         ctx.fillStyle = '#3D3D3D';
 
+        this.mother.draw();
+        this.father.draw();
+        
         ctx.beginPath();
             ctx.moveTo(this.mother.x, this.mother.y + NODE_SIZE/2);
             ctx.lineTo(this.father.x + NODE_SIZE, this.father.y + NODE_SIZE/2);
         ctx.stroke();
-
-        this.mother.draw();
-        this.father.draw();
 
         // Stop drawing if there are no children.
         if (this.children.length == 0) {
@@ -107,22 +113,6 @@ class Connector {
         }
         
         const midX = (NODE_SIZE + this.mother.x + this.father.x) / 2;
-
-        // Draw line down to children segment.
-        ctx.beginPath();
-            ctx.moveTo(midX, this.mother.y + NODE_SIZE/2);
-            ctx.lineTo(midX, this.mother.y + GAP_SIZE);
-        ctx.stroke();
-
-        // Draw horizontal segment above children.
-        if (this.children.length > 1) {
-            const childrenWidth = ((this.children.length - 1) * CHILDREN_SPACE) + NODE_SIZE;
-
-            ctx.beginPath();
-                ctx.moveTo(midX - childrenWidth/2, this.mother.y + GAP_SIZE);
-                ctx.lineTo(midX + childrenWidth/2, this.mother.y + GAP_SIZE);
-            ctx.stroke();
-        }
 
         for (var i = 0; i < this.children.length; i++) {
             this.children[i].draw();
@@ -140,6 +130,22 @@ class Connector {
             if (this.children[i].connector) {
                 this.children[i].connector.draw();
             }
+        }
+
+        // Draw line down to children segment.
+        ctx.beginPath();
+            ctx.moveTo(midX, this.mother.y + NODE_SIZE/2);
+            ctx.lineTo(midX, this.mother.y + GAP_SIZE);
+        ctx.stroke();
+
+        // Draw horizontal segment above children.
+        if (this.children.length > 1) {
+            const childrenWidth = ((this.children.length - 1) * CHILDREN_SPACE) + NODE_SIZE;
+
+            ctx.beginPath();
+                ctx.moveTo(midX - childrenWidth/2, this.mother.y + GAP_SIZE);
+                ctx.lineTo(midX + childrenWidth/2, this.mother.y + GAP_SIZE);
+            ctx.stroke();
         }
     }
 }
