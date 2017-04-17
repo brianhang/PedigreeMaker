@@ -13,12 +13,13 @@ $(document).ready(function() {
     var c1 = new Connector(p2, p1);
 
     // Number of children to test.
-    const testCount = 1// Math.ceil(Math.random() * 4) + 1;
+    const testCount = 2// Math.ceil(Math.random() * 4) + 1;
     var lastChild;
 
     for (var i = 0; i < testCount; i++) {
         var n = new Node(0, 0, i % 2, 0);
         c1.addChild(n);
+        n.addOutsider(Math.random() > 0.8);
 
         lastChild = n;
     }
@@ -29,12 +30,10 @@ $(document).ready(function() {
 
     c1.draw(true);
 
-    lastChild.addOutsider(Math.random() > 0.8);
-
     $('#pedigree').click(function (event) { 
         if (checkClick(nodes, connectors, event.pageX-rect.left, event.pageY-rect.top)) {
             event.preventDefault();
-            
+
             return false;
         }
     });

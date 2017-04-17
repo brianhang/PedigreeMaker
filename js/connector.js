@@ -101,7 +101,7 @@ class Connector {
 
         this.mother.draw();
         this.father.draw();
-        
+
         ctx.beginPath();
             ctx.moveTo(this.mother.x, this.mother.y + NODE_SIZE/2);
             ctx.lineTo(this.father.x + NODE_SIZE, this.father.y + NODE_SIZE/2);
@@ -115,7 +115,12 @@ class Connector {
         const midX = (NODE_SIZE + this.mother.x + this.father.x) / 2;
 
         for (var i = 0; i < this.children.length; i++) {
-            this.children[i].draw();
+            // Draw children connectors as well.
+            if (this.children[i].connector) {
+                this.children[i].connector.draw();
+            } else {
+                this.children[i].draw();
+            }
 
             const childX = this.children[i].x;
             const childY = this.children[i].y;
@@ -125,11 +130,6 @@ class Connector {
                 ctx.moveTo(childX + NODE_SIZE/2, childY);
                 ctx.lineTo(childX + NODE_SIZE/2, this.mother.y + GAP_SIZE);
             ctx.stroke();
-
-            // Draw children connectors as well.
-            if (this.children[i].connector) {
-                this.children[i].connector.draw();
-            }
         }
 
         // Draw line down to children segment.
