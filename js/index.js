@@ -13,15 +13,17 @@ $(document).ready(function() {
     var c1 = new Connector(p2, p1);
 
     // Number of children to test.
-    const testCount = 2// Math.ceil(Math.random() * 4) + 1;
+    const testCount = 3// Math.ceil(Math.random() * 4) + 1;
     var lastChild;
 
     for (var i = 0; i < testCount; i++) {
         var n = new Node(0, 0, i % 2, 0);
         c1.addChild(n);
-        n.addOutsider(Math.random() > 0.8);
-
+        //n.addOutsider(Math.random() > 0.8);
         lastChild = n;
+    }
+    for (var j = 0; j < testCount; j++){
+        c1.children[j].addOutsider(Math.random() > 0.8);
     }
 
     var nodes = [p1, p2];
@@ -33,7 +35,6 @@ $(document).ready(function() {
     $('#pedigree').click(function (event) { 
         if (checkClick(nodes, connectors, event.pageX-rect.left, event.pageY-rect.top)) {
             event.preventDefault();
-
             return false;
         }
     });

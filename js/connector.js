@@ -102,10 +102,17 @@ class Connector {
         this.mother.draw();
         this.father.draw();
 
-        ctx.beginPath();
-            ctx.moveTo(this.mother.x, this.mother.y + NODE_SIZE/2);
-            ctx.lineTo(this.father.x + NODE_SIZE, this.father.y + NODE_SIZE/2);
-        ctx.stroke();
+        if(this.mother.x < this.father.x){
+            ctx.beginPath();
+                ctx.moveTo(this.father.x, this.father.y + NODE_SIZE/2);
+                ctx.lineTo(this.mother.x + NODE_SIZE, this.mother.y + NODE_SIZE/2);
+            ctx.stroke();
+        } else {
+            ctx.beginPath();
+                ctx.moveTo(this.mother.x, this.mother.y + NODE_SIZE/2);
+                ctx.lineTo(this.father.x + NODE_SIZE, this.father.y + NODE_SIZE/2);
+            ctx.stroke();
+        }
 
         // Stop drawing if there are no children.
         if (this.children.length == 0) {
