@@ -32,7 +32,7 @@ function checkClick(nodes, connectors, x, y) {
 
   for(var i = 0; i < connectors.length; i++){
      if(inRangeConnector((connectors[i].x), (connectors[i].y), x, y)) {
-      //TODO - Add new level
+      alert("clicked");
      }
   }
 

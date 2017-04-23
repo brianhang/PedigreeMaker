@@ -89,7 +89,8 @@ div#help-button {
 	left: 50%;
 	margin: -220px 0 0 -400px;
 	outline: #cecece dashed thin;
-	background-color: blue;
+	text-align: center;
+	padding: 20px 20px 20px 20px;
 }
 
 footer {

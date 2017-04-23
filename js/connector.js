@@ -10,6 +10,12 @@ class Connector {
         this.mother = mother;
         this.father = father;
         this.children = [];
+        if(father.x > mother.x){
+            this.x = mother.x + NODE_SIZE;
+        } else {
+            this.x = father.x + NODE_SIZE;
+        }
+        this.y = father.y + (NODE_SIZE/2) - (CONNECTOR_HEIGHT/2);
     }
 
     /**
