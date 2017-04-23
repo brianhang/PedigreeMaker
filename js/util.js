@@ -32,7 +32,10 @@ function checkClick(nodes, connectors, x, y) {
 
   for(var i = 0; i < connectors.length; i++){
      if(inRangeConnector((connectors[i].x), (connectors[i].y), x, y)) {
-      alert("clicked");
+      
+
+var person = prompt("Please enter the # of children", "");
+var num= parseInt(person);
      }
   }
 
