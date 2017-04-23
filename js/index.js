@@ -13,20 +13,20 @@ $(document).ready(function() {
     var c1 = new Connector(p2, p1);
 
     // Number of children to test.
-    const testCount = 3// Math.ceil(Math.random() * 4) + 1;
+    const testCount = 4// Math.ceil(Math.random() * 4) + 1;
     var lastChild;
+
+    var nodes = [p1, p2];
 
     for (var i = 0; i < testCount; i++) {
         var n = new Node(0, 0, i % 2, 0);
         c1.addChild(n);
-        //n.addOutsider(Math.random() > 0.8);
+        nodes.push(n)
         lastChild = n;
     }
-    for (var j = 0; j < testCount; j++){
-        c1.children[j].addOutsider(Math.random() > 0.8);
+    for (var j = 0; j < 2; j++){
+        nodes.push(c1.children[j].addOutsider(Math.random() > 0.8));
     }
-
-    var nodes = [p1, p2];
     var connectors = [c1];
     var width = 0;
 

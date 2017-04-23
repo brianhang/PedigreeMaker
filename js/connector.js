@@ -1,6 +1,6 @@
 const CHILDREN_SPACE = NODE_SIZE * 2.75;
 const GAP_SIZE = NODE_SIZE * 2;
-const OUTSIDER_GAP = NODE_SIZE * 1.25;
+const OUTSIDER_GAP = NODE_SIZE * 1.5;
 
 class Connector {
     /**

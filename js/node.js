@@ -73,6 +73,8 @@ class Node {
 
         // Store the connector in this node.
         this.connector = connector;
+
+        return outsider
     }
 
     /**
