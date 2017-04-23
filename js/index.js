@@ -10,16 +10,6 @@ var num= parseInt(person);
     var p1 = new Node(290, 50, MALE, 0);
     var p2 = new Node(410, 50, FEMALE, 0);
 
-	var cNodes= [];
-	var k=0;
-for(var k=0; k<num;k++){
-	
-	
-   
-    cNodes.push(  new Node(k, 0, k%2, 0))
-   k=k+200;
-	
-}
     var c1 = new Connector(p2, p1);
 
     // Number of children to test.
