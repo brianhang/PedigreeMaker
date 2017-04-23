@@ -83,7 +83,7 @@ div#help-button {
 #info {
 	position: absolute;
 	width: 800px;
-	height: 600px;
+	height: 480px;
 	display: inline-block;
 	top: 50%;
 	left: 50%;
@@ -95,9 +95,9 @@ div#help-button {
 footer {
 	font-size: 10px;
 	position: absolute;
-	right: 0;
-	bottom: 0;
-	left: 0;
+ 	right: 0;
+  	bottom: 0;
+  	left: 0;
 	padding: 10px 20% 10px 20%;
 	background-color: #ededed;
 	text-align: center;
