@@ -50,8 +50,11 @@ class Connector {
      * Adds a vertex as a child of the mother and father for this connection.
      */
     addChild(child) {
+		//alert("li1");
         this.children.push(child);
+		//alert("li2");
         this.centerChildren();
+		//alert("li");
     }
 
     /**

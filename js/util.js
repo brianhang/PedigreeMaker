@@ -34,9 +34,32 @@ function checkClick(nodes, connectors, x, y) {
      if(inRangeConnector((connectors[i].x), (connectors[i].y), x, y)) {
       
 
-var person = prompt("Please enter the # of children", "");
-var num= parseInt(person);
-     }
+var person = prompt("Please enter the # of children", ""); //asks user for # of children
+var num= parseInt(person); //converts input to num
+//alert(num);
+  var lastChild;
+    for (var k = 0; k < num; k++) {
+		//alert("hi2");
+        var n = new Node(0, 0, k % 2, 0);
+		//alert("hi3");
+		//alert(n);
+		//alert(connectors[i]);
+        connectors[i].addChild(n);
+		//alert("hi4");
+        nodes.push(n)
+		//alert("hi5");
+        lastChild = n;
+		
+    }
+    for (var j = 0; j < num; j++){
+		alert("bob2");
+        nodes.push(connectors[i].children[j].addOutsider(Math.random() > 0.8));
+		alert("bob");
+    }
+	 c1.draw(true);
+     return true;
+	 }
+   
   }
 
   return false;
