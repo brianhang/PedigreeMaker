@@ -29,6 +29,7 @@ div#banner-content {
 	font-weight: bold;
 	cursor: default;
 }
+
 /* square on the banner */
 div#banner-sq {
 	display: inline-block;
@@ -38,6 +39,7 @@ div#banner-sq {
 	background-color: #F0F0F0;	
 	border: 1px solid #000000;
 }
+
 /* connector between sq and circ */
 div#banner-connector {
 	display: inline-block;
@@ -47,6 +49,7 @@ div#banner-connector {
 	background-color: #000000;
 	margin: 0px -10px 0 -7px;
 }
+
 /* circle on the banner */
 div#banner-circ {
 	display: inline-block;
@@ -57,6 +60,7 @@ div#banner-circ {
 	border-radius: 20px;
 	border: 1px solid #000000;
 }
+
 /* help button for banner */
 div#help-button {
 	display: inline-block;
@@ -94,6 +98,7 @@ div#help-button {
 }
 
 footer {
+	cursor: default;
 	font-size: 10px;
 	position: absolute;
  	right: 0;
