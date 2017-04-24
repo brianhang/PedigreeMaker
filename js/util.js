@@ -52,9 +52,9 @@ var num= parseInt(person); //converts input to num
 		
     }
     for (var j = 0; j < num; j++){
-		alert("bob2");
+		//alert("bob2");
         nodes.push(connectors[i].children[j].addOutsider(Math.random() > 0.8));
-		alert("bob");
+		//alert("bob");
     }
 	 c1.draw(true);
      return true;
